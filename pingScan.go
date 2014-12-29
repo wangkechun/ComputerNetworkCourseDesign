@@ -96,7 +96,7 @@ func ping(host string) (re PingReturn) {
 	PingLogger.Println("Runing Ping data ", printByte(buffer.Bytes()))
 	conn.Write(buffer.Bytes())
 	t_start := time.Now()
-	conn.SetReadDeadline((time.Now().Add(time.Second * 1)))
+	conn.SetReadDeadline((time.Now().Add(time.Second * 5)))
 	recv := make([]byte, 100)
 	recv_len, err := conn.Read(recv)
 	if err != nil {
@@ -123,21 +123,20 @@ func printByte(b []byte) (r string) {
 	return
 }
 
-func main() {
+func PingList(hostList []string) {
 	successAlive := make([]PingReturn, 0)
 	noRet := make(chan PingReturn, 255)
-	for i := 1; i < 255; i++ {
-		host := fmt.Sprintf("10.1.12.%d", i)
-		go func() {
-			r := ping(host)
+	for _, v := range hostList {
+		go func(v string) {
+			r := ping(v)
 			print("*")
 			noRet <- r
-		}()
+		}(v)
 	}
-	var suc, err int
+
 	for {
 		select {
-		case <-time.After(time.Second * 3):
+		case <-time.After(time.Second * 5):
 			fmt.Println("timeout 3")
 			break
 		case r := <-noRet:
@@ -146,11 +145,28 @@ func main() {
 		}
 		break
 	}
+
+	var suc, err int
 	for _, v := range successAlive {
 		if v.success {
+			suc++
 			fmt.Printf("ip:%s success:%t\n", v.host, v.success)
+		} else {
+			err++
+			// fmt.Println(v.msg, v.err.Error())
 		}
 	}
-	fmt.Printf("###########################33\nsuccess:%d error:%d\n", suc, err)
+	fmt.Printf("###########################\nsuccess:%d error:%d\n", suc, err)
 
+}
+
+func main() {
+	for j := 12; j < 13; j++ {
+		hosts := make([]string, 0)
+		for i := 1; i < 255; i++ {
+			host := fmt.Sprintf("10.1.%d.%d", j, i)
+			hosts = append(hosts, host)
+		}
+		PingList(hosts)
+	}
 }
