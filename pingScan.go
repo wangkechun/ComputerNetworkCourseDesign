@@ -126,17 +126,28 @@ func printByte(b []byte) (r string) {
 func PingList(hostList []string) {
 	successAlive := make([]PingReturn, 0)
 	noRet := make(chan PingReturn, 255)
+	var ticker *time.Ticker
+	ticker = time.NewTicker(time.Second)
+	defer ticker.Stop()
+	go func() {
+		for {
+			select {
+			case <-ticker.C:
+				fmt.Printf("all:%d over:%d pre:%f\n", len(hostList), len(successAlive), 0.)
+			}
+		}
+	}()
 	for _, v := range hostList {
 		go func(v string) {
 			r := ping(v)
-			print("*")
+			// print("*")
 			noRet <- r
 		}(v)
 	}
 
 	for {
 		select {
-		case <-time.After(time.Second * 5):
+		case <-time.After(time.Second * 3):
 			fmt.Println("timeout 3")
 			break
 		case r := <-noRet:
@@ -161,7 +172,7 @@ func PingList(hostList []string) {
 }
 
 func main() {
-	for j := 12; j < 13; j++ {
+	for j := 1; j < 255; j++ {
 		hosts := make([]string, 0)
 		for i := 1; i < 255; i++ {
 			host := fmt.Sprintf("10.1.%d.%d", j, i)
