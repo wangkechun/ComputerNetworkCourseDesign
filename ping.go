@@ -2,22 +2,18 @@ package main
 
 import (
 	"bytes"
-	"container/list"
 	"encoding/binary"
 	"flag"
 	"fmt"
 	"log"
 	"net"
-	"os"
 	"time"
 )
 
 var _ = bytes.MinRead
-var _ = list.New
 var _ = binary.MaxVarintLen16
 var _ = fmt.Scanln
 var _ = log.Println
-var _ = os.DevNull
 var _ = time.ANSIC
 
 type ICMP struct {
