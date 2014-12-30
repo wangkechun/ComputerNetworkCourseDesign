@@ -1,0 +1,1799 @@
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.1.1 success:true
+###########################
+success:1 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.2.1 success:true
+###########################
+success:1 error:0
+all:254 over:7 pre:0.000000
+all:254 over:7 pre:0.000000
+all:254 over:7 pre:0.000000
+timeout 3
+ip:10.1.3.107 success:true
+ip:10.1.3.108 success:true
+ip:10.1.3.110 success:true
+ip:10.1.3.120 success:true
+ip:10.1.3.127 success:true
+ip:10.1.3.146 success:true
+ip:10.1.3.187 success:true
+###########################
+success:7 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.4.1 success:true
+ip:10.1.4.73 success:true
+###########################
+success:2 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.5.1 success:true
+###########################
+success:1 error:0
+all:254 over:41 pre:0.000000
+all:254 over:41 pre:0.000000
+all:254 over:41 pre:0.000000
+timeout 3
+ip:10.1.6.1 success:true
+ip:10.1.6.55 success:true
+ip:10.1.6.51 success:true
+ip:10.1.6.43 success:true
+ip:10.1.6.35 success:true
+ip:10.1.6.32 success:true
+ip:10.1.6.29 success:true
+ip:10.1.6.13 success:true
+ip:10.1.6.62 success:true
+ip:10.1.6.68 success:true
+ip:10.1.6.143 success:true
+ip:10.1.6.117 success:true
+ip:10.1.6.116 success:true
+ip:10.1.6.134 success:true
+ip:10.1.6.133 success:true
+ip:10.1.6.94 success:true
+ip:10.1.6.77 success:true
+ip:10.1.6.104 success:true
+ip:10.1.6.79 success:true
+ip:10.1.6.76 success:true
+ip:10.1.6.189 success:true
+ip:10.1.6.129 success:true
+ip:10.1.6.184 success:true
+ip:10.1.6.150 success:true
+ip:10.1.6.192 success:true
+ip:10.1.6.162 success:true
+ip:10.1.6.166 success:true
+ip:10.1.6.165 success:true
+ip:10.1.6.158 success:true
+ip:10.1.6.155 success:true
+ip:10.1.6.75 success:true
+ip:10.1.6.244 success:true
+ip:10.1.6.230 success:true
+ip:10.1.6.213 success:true
+ip:10.1.6.253 success:true
+ip:10.1.6.251 success:true
+ip:10.1.6.237 success:true
+ip:10.1.6.229 success:true
+ip:10.1.6.220 success:true
+ip:10.1.6.210 success:true
+ip:10.1.6.56 success:true
+###########################
+success:41 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:34 pre:0.000000
+all:254 over:34 pre:0.000000
+all:254 over:34 pre:0.000000
+timeout 3
+ip:10.1.8.1 success:true
+ip:10.1.8.81 success:true
+ip:10.1.8.88 success:true
+ip:10.1.8.104 success:true
+ip:10.1.8.109 success:true
+ip:10.1.8.139 success:true
+ip:10.1.8.148 success:true
+ip:10.1.8.147 success:true
+ip:10.1.8.144 success:true
+ip:10.1.8.113 success:true
+ip:10.1.8.112 success:true
+ip:10.1.8.183 success:true
+ip:10.1.8.166 success:true
+ip:10.1.8.201 success:true
+ip:10.1.8.155 success:true
+ip:10.1.8.248 success:true
+ip:10.1.8.249 success:true
+ip:10.1.8.247 success:true
+ip:10.1.8.246 success:true
+ip:10.1.8.245 success:true
+ip:10.1.8.244 success:true
+ip:10.1.8.243 success:true
+ip:10.1.8.242 success:true
+ip:10.1.8.241 success:true
+ip:10.1.8.240 success:true
+ip:10.1.8.238 success:true
+ip:10.1.8.239 success:true
+ip:10.1.8.236 success:true
+ip:10.1.8.237 success:true
+ip:10.1.8.234 success:true
+ip:10.1.8.235 success:true
+ip:10.1.8.232 success:true
+ip:10.1.8.233 success:true
+ip:10.1.8.231 success:true
+###########################
+success:34 error:0
+all:254 over:6 pre:0.000000
+all:254 over:6 pre:0.000000
+all:254 over:6 pre:0.000000
+timeout 3
+ip:10.1.9.1 success:true
+ip:10.1.9.245 success:true
+ip:10.1.9.248 success:true
+ip:10.1.9.246 success:true
+ip:10.1.9.247 success:true
+ip:10.1.9.249 success:true
+###########################
+success:6 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.10.1 success:true
+###########################
+success:1 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.11.1 success:true
+###########################
+success:1 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.12.1 success:true
+###########################
+success:1 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.13.1 success:true
+###########################
+success:1 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.14.1 success:true
+ip:10.1.14.254 success:true
+###########################
+success:2 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.15.1 success:true
+###########################
+success:1 error:0
+all:254 over:22 pre:0.000000
+all:254 over:22 pre:0.000000
+all:254 over:22 pre:0.000000
+timeout 3
+ip:10.1.16.1 success:true
+ip:10.1.16.161 success:true
+ip:10.1.16.201 success:true
+ip:10.1.16.203 success:true
+ip:10.1.16.202 success:true
+ip:10.1.16.231 success:true
+ip:10.1.16.249 success:true
+ip:10.1.16.235 success:true
+ip:10.1.16.234 success:true
+ip:10.1.16.232 success:true
+ip:10.1.16.246 success:true
+ip:10.1.16.245 success:true
+ip:10.1.16.244 success:true
+ip:10.1.16.243 success:true
+ip:10.1.16.242 success:true
+ip:10.1.16.241 success:true
+ip:10.1.16.233 success:true
+ip:10.1.16.250 success:true
+ip:10.1.16.237 success:true
+ip:10.1.16.236 success:true
+ip:10.1.16.251 success:true
+ip:10.1.16.247 success:true
+###########################
+success:22 error:0
+all:254 over:4 pre:0.000000
+all:254 over:4 pre:0.000000
+all:254 over:4 pre:0.000000
+timeout 3
+ip:10.1.17.207 success:true
+ip:10.1.17.232 success:true
+ip:10.1.17.187 success:true
+ip:10.1.17.254 success:true
+###########################
+success:4 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.18.1 success:true
+###########################
+success:1 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.20.1 success:true
+ip:10.1.20.125 success:true
+###########################
+success:2 error:0
+all:254 over:7 pre:0.000000
+all:254 over:7 pre:0.000000
+all:254 over:7 pre:0.000000
+timeout 3
+ip:10.1.21.1 success:true
+ip:10.1.21.6 success:true
+ip:10.1.21.49 success:true
+ip:10.1.21.40 success:true
+ip:10.1.21.36 success:true
+ip:10.1.21.25 success:true
+ip:10.1.21.250 success:true
+###########################
+success:7 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.22.1 success:true
+###########################
+success:1 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.23.1 success:true
+###########################
+success:1 error:0
+all:254 over:29 pre:0.000000
+all:254 over:29 pre:0.000000
+all:254 over:29 pre:0.000000
+timeout 3
+ip:10.1.24.4 success:true
+ip:10.1.24.5 success:true
+ip:10.1.24.33 success:true
+ip:10.1.24.32 success:true
+ip:10.1.24.31 success:true
+ip:10.1.24.30 success:true
+ip:10.1.24.29 success:true
+ip:10.1.24.14 success:true
+ip:10.1.24.21 success:true
+ip:10.1.24.16 success:true
+ip:10.1.24.12 success:true
+ip:10.1.24.26 success:true
+ip:10.1.24.15 success:true
+ip:10.1.24.28 success:true
+ip:10.1.24.25 success:true
+ip:10.1.24.24 success:true
+ip:10.1.24.23 success:true
+ip:10.1.24.20 success:true
+ip:10.1.24.19 success:true
+ip:10.1.24.18 success:true
+ip:10.1.24.9 success:true
+ip:10.1.24.1 success:true
+ip:10.1.24.10 success:true
+ip:10.1.24.8 success:true
+ip:10.1.24.6 success:true
+ip:10.1.24.22 success:true
+ip:10.1.24.63 success:true
+ip:10.1.24.65 success:true
+ip:10.1.24.127 success:true
+###########################
+success:29 error:0
+all:254 over:12 pre:0.000000
+all:254 over:12 pre:0.000000
+all:254 over:12 pre:0.000000
+timeout 3
+ip:10.1.25.1 success:true
+ip:10.1.25.36 success:true
+ip:10.1.25.14 success:true
+ip:10.1.25.44 success:true
+ip:10.1.25.43 success:true
+ip:10.1.25.41 success:true
+ip:10.1.25.121 success:true
+ip:10.1.25.122 success:true
+ip:10.1.25.120 success:true
+ip:10.1.25.124 success:true
+ip:10.1.25.123 success:true
+ip:10.1.25.127 success:true
+###########################
+success:12 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+timeout 3
+ip:10.1.27.254 success:true
+ip:10.1.27.253 success:true
+ip:10.1.27.193 success:true
+###########################
+success:3 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.31.1 success:true
+###########################
+success:1 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.36.1 success:true
+###########################
+success:1 error:0
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+timeout 3
+ip:10.1.37.1 success:true
+ip:10.1.37.252 success:true
+ip:10.1.37.214 success:true
+###########################
+success:3 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.39.1 success:true
+ip:10.1.39.120 success:true
+###########################
+success:2 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.40.250 success:true
+###########################
+success:1 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.41.79 success:true
+ip:10.1.41.82 success:true
+###########################
+success:2 error:0
+all:254 over:5 pre:0.000000
+all:254 over:5 pre:0.000000
+all:254 over:5 pre:0.000000
+timeout 3
+ip:10.1.42.127 success:true
+ip:10.1.42.133 success:true
+ip:10.1.42.166 success:true
+ip:10.1.42.169 success:true
+ip:10.1.42.171 success:true
+###########################
+success:5 error:0
+all:254 over:4 pre:0.000000
+all:254 over:4 pre:0.000000
+all:254 over:4 pre:0.000000
+timeout 3
+ip:10.1.43.85 success:true
+ip:10.1.43.86 success:true
+ip:10.1.43.104 success:true
+ip:10.1.43.107 success:true
+###########################
+success:4 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.44.129 success:true
+ip:10.1.44.161 success:true
+###########################
+success:2 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.45.1 success:true
+ip:10.1.45.133 success:true
+###########################
+success:2 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.48.250 success:true
+###########################
+success:1 error:0
+all:254 over:5 pre:0.000000
+all:254 over:5 pre:0.000000
+all:254 over:5 pre:0.000000
+timeout 3
+ip:10.1.49.250 success:true
+ip:10.1.49.193 success:true
+ip:10.1.49.249 success:true
+ip:10.1.49.209 success:true
+ip:10.1.49.254 success:true
+###########################
+success:5 error:0
+all:254 over:244 pre:0.000000
+all:254 over:244 pre:0.000000
+all:254 over:244 pre:0.000000
+timeout 3
+###########################
+success:0 error:244
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.51.62 success:true
+###########################
+success:1 error:0
+all:254 over:5 pre:0.000000
+all:254 over:5 pre:0.000000
+all:254 over:5 pre:0.000000
+timeout 3
+ip:10.1.52.49 success:true
+ip:10.1.52.249 success:true
+ip:10.1.52.250 success:true
+ip:10.1.52.224 success:true
+ip:10.1.52.254 success:true
+###########################
+success:5 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.53.254 success:true
+###########################
+success:1 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:231 pre:0.000000
+all:254 over:231 pre:0.000000
+all:254 over:231 pre:0.000000
+timeout 3
+###########################
+success:0 error:231
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:19 pre:0.000000
+all:254 over:19 pre:0.000000
+all:254 over:19 pre:0.000000
+timeout 3
+###########################
+success:0 error:19
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:231 pre:0.000000
+all:254 over:231 pre:0.000000
+all:254 over:231 pre:0.000000
+timeout 3
+###########################
+success:0 error:231
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:19 pre:0.000000
+all:254 over:19 pre:0.000000
+all:254 over:19 pre:0.000000
+timeout 3
+ip:10.1.64.1 success:true
+###########################
+success:1 error:18
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:231 pre:0.000000
+all:254 over:231 pre:0.000000
+all:254 over:231 pre:0.000000
+timeout 3
+###########################
+success:0 error:231
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.72.1 success:true
+ip:10.1.72.240 success:true
+###########################
+success:2 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.73.114 success:true
+ip:10.1.73.249 success:true
+###########################
+success:2 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:246 pre:0.000000
+all:254 over:246 pre:0.000000
+all:254 over:246 pre:0.000000
+timeout 3
+###########################
+success:0 error:246
+all:254 over:8 pre:0.000000
+all:254 over:8 pre:0.000000
+all:254 over:8 pre:0.000000
+timeout 3
+ip:10.1.76.1 success:true
+ip:10.1.76.50 success:true
+ip:10.1.76.141 success:true
+ip:10.1.76.156 success:true
+ip:10.1.76.253 success:true
+ip:10.1.76.191 success:true
+ip:10.1.76.144 success:true
+ip:10.1.76.211 success:true
+###########################
+success:8 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+timeout 3
+###########################
+success:0 error:250
+all:254 over:10 pre:0.000000
+all:254 over:10 pre:0.000000
+all:254 over:10 pre:0.000000
+timeout 3
+ip:10.1.80.1 success:true
+ip:10.1.80.59 success:true
+ip:10.1.80.64 success:true
+ip:10.1.80.138 success:true
+ip:10.1.80.75 success:true
+ip:10.1.80.250 success:true
+ip:10.1.80.249 success:true
+ip:10.1.80.236 success:true
+ip:10.1.80.243 success:true
+ip:10.1.80.129 success:true
+###########################
+success:10 error:0
+all:254 over:4 pre:0.000000
+all:254 over:4 pre:0.000000
+all:254 over:4 pre:0.000000
+timeout 3
+ip:10.1.81.1 success:true
+ip:10.1.81.2 success:true
+ip:10.1.81.10 success:true
+ip:10.1.81.21 success:true
+###########################
+success:4 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:154 pre:0.000000
+all:254 over:154 pre:0.000000
+all:254 over:154 pre:0.000000
+timeout 3
+###########################
+success:0 error:154
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.85.245 success:true
+###########################
+success:1 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:95 pre:0.000000
+all:254 over:95 pre:0.000000
+all:254 over:95 pre:0.000000
+timeout 3
+###########################
+success:0 error:95
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:155 pre:0.000000
+all:254 over:155 pre:0.000000
+all:254 over:155 pre:0.000000
+timeout 3
+###########################
+success:0 error:155
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.95.51 success:true
+###########################
+success:1 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.97.102 success:true
+###########################
+success:1 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:248 pre:0.000000
+all:254 over:248 pre:0.000000
+all:254 over:248 pre:0.000000
+timeout 3
+###########################
+success:0 error:248
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+###########################
+success:0 error:2
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.109.214 success:true
+###########################
+success:1 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:249 pre:0.000000
+all:254 over:249 pre:0.000000
+all:254 over:249 pre:0.000000
+timeout 3
+###########################
+success:0 error:249
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+timeout 3
+ip:10.1.114.110 success:true
+ip:10.1.114.170 success:true
+ip:10.1.114.171 success:true
+###########################
+success:3 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+timeout 3
+ip:10.1.116.73 success:true
+ip:10.1.116.164 success:true
+ip:10.1.116.169 success:true
+###########################
+success:3 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.117.46 success:true
+###########################
+success:1 error:0
+all:254 over:243 pre:0.000000
+all:254 over:243 pre:0.000000
+all:254 over:243 pre:0.000000
+timeout 3
+###########################
+success:0 error:243
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.122.59 success:true
+###########################
+success:1 error:0
+all:254 over:4 pre:0.000000
+all:254 over:4 pre:0.000000
+all:254 over:4 pre:0.000000
+timeout 3
+ip:10.1.123.64 success:true
+ip:10.1.123.65 success:true
+ip:10.1.123.74 success:true
+ip:10.1.123.75 success:true
+###########################
+success:4 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.124.1 success:true
+ip:10.1.124.129 success:true
+###########################
+success:2 error:0
+all:254 over:243 pre:0.000000
+all:254 over:243 pre:0.000000
+all:254 over:243 pre:0.000000
+timeout 3
+###########################
+success:0 error:243
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+timeout 3
+###########################
+success:0 error:250
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.141.142 success:true
+###########################
+success:1 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.143.99 success:true
+###########################
+success:1 error:0
+all:254 over:248 pre:0.000000
+all:254 over:248 pre:0.000000
+all:254 over:248 pre:0.000000
+timeout 3
+###########################
+success:0 error:248
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+timeout 3
+###########################
+success:0 error:250
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+timeout 3
+###########################
+success:0 error:250
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.184.44 success:true
+###########################
+success:1 error:0
+all:254 over:249 pre:0.000000
+all:254 over:249 pre:0.000000
+all:254 over:249 pre:0.000000
+timeout 3
+###########################
+success:0 error:249
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+all:254 over:250 pre:0.000000
+timeout 3
+###########################
+success:0 error:250
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+all:254 over:3 pre:0.000000
+timeout 3
+ip:10.1.225.98 success:true
+ip:10.1.225.196 success:true
+ip:10.1.225.197 success:true
+###########################
+success:3 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+all:254 over:2 pre:0.000000
+timeout 3
+ip:10.1.228.89 success:true
+ip:10.1.228.156 success:true
+###########################
+success:2 error:0
+all:254 over:245 pre:0.000000
+all:254 over:245 pre:0.000000
+all:254 over:245 pre:0.000000
+timeout 3
+###########################
+success:0 error:245
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+all:254 over:254 pre:0.000000
+timeout 3
+###########################
+success:0 error:254
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+all:254 over:1 pre:0.000000
+timeout 3
+ip:10.1.253.1 success:true
+###########################
+success:1 error:0
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+all:254 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+[localhost] local: go build pingScan.go&&sudo  ./pingScan 
+
+Done.
