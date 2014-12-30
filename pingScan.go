@@ -96,7 +96,7 @@ func ping(host string) (re PingReturn) {
 	PingLogger.Println("Runing Ping data ", printByte(buffer.Bytes()))
 	conn.Write(buffer.Bytes())
 	t_start := time.Now()
-	conn.SetReadDeadline((time.Now().Add(time.Second * 5)))
+	conn.SetReadDeadline((time.Now().Add(time.Second * 10)))
 	recv := make([]byte, 100)
 	recv_len, err := conn.Read(recv)
 	if err != nil {
@@ -172,12 +172,16 @@ func PingList(hostList []string) {
 }
 
 func main() {
+	hosts := make([]string, 0)
 	for j := 1; j < 255; j++ {
-		hosts := make([]string, 0)
 		for i := 1; i < 255; i++ {
 			host := fmt.Sprintf("10.1.%d.%d", j, i)
 			hosts = append(hosts, host)
 		}
-		PingList(hosts)
+	}
+	every_limit := 200
+	for i := 0; i < len(hosts); i += every_limit {
+		fmt.Println("now:", hosts[i])
+		PingList(hosts[i : i+every_limit])
 	}
 }
