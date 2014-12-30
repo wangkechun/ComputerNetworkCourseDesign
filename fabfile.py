@@ -1,16 +1,12 @@
 from fabric.api import *
 
 
-def rp():
-	local("go build pingScan.go&&sudo  ./pingScan ")
+def ping2():
+	local("go build cs/ping2&&sudo ./ping2")
+
+def pingScan():
+	local("go build cs/pingScan&&sudo  ./pingScan ")
 
 
-def tr():
-	local("go build tracert.go&&sudo  ./tracert ")
-
-
-def echo():
-	local("go build echo.go&&sudo  ./echo ")
-
-def tr2():
-	local("go build traceroute.go&&sudo  ./traceroute baidu.com ")
+def traceroute():
+	local("go build cs/traceroute&&sudo  ./traceroute baidu.com ")
