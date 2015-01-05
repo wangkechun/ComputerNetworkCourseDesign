@@ -174,7 +174,7 @@ class BaseHTTPRequestHandler:
 
   def send_header(self, keyword, value):
       self.wfile.write("%s: %s\r\n" % (keyword, value))
-      
+
   def end_headers(self):
     self.wfile.write("\r\n")
 
@@ -209,7 +209,7 @@ class SimpleHTTPRequestsHandler(BaseHTTPRequestHandler):
     if os.path.isdir(path):
       if not self.path.endswith('/'):
         self.send_response(301)
-        self.send_head("Location",self.path+"/")
+        self.send_header("Location",self.path+"/")
         self.end_headers()
         return None
 
@@ -227,6 +227,7 @@ class SimpleHTTPRequestsHandler(BaseHTTPRequestHandler):
     except IOError:
       self.send_error(404,"File not found")
       return None
+      
     try:
       self.send_response(200)
       fs = os.fstat(f.fileno())
@@ -286,7 +287,6 @@ class SimpleHTTPRequestsHandler(BaseHTTPRequestHandler):
 
   def copyfile(self,source ,outputfile):
     shutil.copyfileobj(source,outputfile)
-
 
 
 def _eintr_retry(func, *args):
@@ -373,8 +373,8 @@ class HTTPServer:
         self.RequestHandlerClass(request,client_address,self)
       except Exception as e:
         print(request,client_address,e)
-        import ipdb;ipdb.set_trace()
-        raise
+        # import ipdb;ipdb.set_trace()
+        # raise
 
 def main():
   port = 8000
