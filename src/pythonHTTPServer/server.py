@@ -323,8 +323,20 @@ class SimpleHTTPRequestsHandler(BaseHTTPRequestHandler):
         505: ('HTTP Version Not Supported', 'Cannot fulfill request.'),
         }
 
+
+import SocketServer
+
+class HTTPServer(SocketServer.TCPServer):
+  allow_reuse_address = 1
+
+  def server_bind(self):
+    SocketServer.TCPServer.server_bind(self)
+    host,port = self.socket.getsockname()[:2]
+    self.server_name = socket.getfqdn(host)
+    self.server_port = port
+
 def test(HandleClass = SimpleHTTPRequestsHandler,
-  ServerClass = BaseHTTPServer.HTTPServer):
+  ServerClass = HTTPServer):
   BaseHTTPServer.test(HandleClass,ServerClass)
 
 
