@@ -1,6 +1,5 @@
 import os
 import posixpath
-import BaseHTTPServer
 import urllib
 import cgi
 import sys
@@ -377,10 +376,26 @@ class HTTPServer(TCPServer):
     self.server_name = socket.getfqdn(host)
     self.server_port = port
 
+
+def Base_test(HandlerClass = BaseHTTPRequestHandler,
+         ServerClass = HTTPServer, protocol="HTTP/1.0"):
+    if sys.argv[1:]:
+        port = int(sys.argv[1])
+    else:
+        port = 8000
+    server_address = ('', port)
+
+    HandlerClass.protocol_version = protocol
+    httpd = ServerClass(server_address, HandlerClass)
+
+    sa = httpd.socket.getsockname()
+    print "Serving HTTP on", sa[0], "port", sa[1], "..."
+    httpd.serve_forever()
+
+
 def test(HandleClass = SimpleHTTPRequestsHandler,
   ServerClass = HTTPServer):
-  BaseHTTPServer.test(HandleClass,ServerClass)
-
+  Base_test(HandleClass,ServerClass)
 
 
 if __name__ == '__main__':
