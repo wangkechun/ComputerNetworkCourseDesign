@@ -20,32 +20,90 @@ www_directory = "/home/wkc/project/ComputerNetworkCourseDesign/src/pythonHTTPSer
 www_directory = "/home/wkc/project/ComputerNetworkCourseDesign/src/pythonHTTPServer/"
 
 
-class BaseRequestHandler:
-    def __init__(self, request, client_address, server):
-        self.request = request
-        self.client_address = client_address
-        self.server = server
-        self.setup()
-        try:
-            self.handle()
-        finally:
-            self.finish()
+HTTP_STATUS_MSG = {
+      100: ('Continue', 'Request received, please continue'),
+      101: ('Switching Protocols',
+            'Switching to new protocol; obey Upgrade header'),
 
-    def setup(self):
-        pass
+      200: ('OK', 'Request fulfilled, document follows'),
+      201: ('Created', 'Document created, URL follows'),
+      202: ('Accepted',
+            'Request accepted, processing continues off-line'),
+      203: ('Non-Authoritative Information', 'Request fulfilled from cache'),
+      204: ('No Content', 'Request fulfilled, nothing follows'),
+      205: ('Reset Content', 'Clear input form for further input.'),
+      206: ('Partial Content', 'Partial content follows.'),
 
-    def handle(self):
-        pass
+      300: ('Multiple Choices',
+            'Object has several resources -- see URI list'),
+      301: ('Moved Permanently', 'Object moved permanently -- see URI list'),
+      302: ('Found', 'Object moved temporarily -- see URI list'),
+      303: ('See Other', 'Object moved -- see Method and URL list'),
+      304: ('Not Modified',
+            'Document has not changed since given time'),
+      305: ('Use Proxy',
+            'You must use proxy specified in Location to access this '
+            'resource.'),
+      307: ('Temporary Redirect',
+            'Object moved temporarily -- see URI list'),
 
-    def finish(self):
-        pass
+      400: ('Bad Request',
+            'Bad request syntax or unsupported method'),
+      401: ('Unauthorized',
+            'No permission -- see authorization schemes'),
+      402: ('Payment Required',
+            'No payment -- see charging schemes'),
+      403: ('Forbidden',
+            'Request forbidden -- authorization will not help'),
+      404: ('Not Found', 'Nothing matches the given URI'),
+      405: ('Method Not Allowed',
+            'Specified method is invalid for this resource.'),
+      406: ('Not Acceptable', 'URI not available in preferred format.'),
+      407: ('Proxy Authentication Required', 'You must authenticate with '
+            'this proxy before proceeding.'),
+      408: ('Request Timeout', 'Request timed out; try again later.'),
+      409: ('Conflict', 'Request conflict.'),
+      410: ('Gone',
+            'URI no longer exists and has been permanently removed.'),
+      411: ('Length Required', 'Client must specify Content-Length.'),
+      412: ('Precondition Failed', 'Precondition in headers is false.'),
+      413: ('Request Entity Too Large', 'Entity is too large.'),
+      414: ('Request-URI Too Long', 'URI is too long.'),
+      415: ('Unsupported Media Type', 'Entity body in unsupported format.'),
+      416: ('Requested Range Not Satisfiable',
+            'Cannot satisfy request range.'),
+      417: ('Expectation Failed',
+            'Expect condition could not be satisfied.'),
+
+      500: ('Internal Server Error', 'Server got itself in trouble'),
+      501: ('Not Implemented',
+            'Server does not support this operation'),
+      502: ('Bad Gateway', 'Invalid responses from another server/proxy.'),
+      503: ('Service Unavailable',
+            'The server cannot process the request due to a high load'),
+      504: ('Gateway Timeout',
+            'The gateway server did not receive a timely response'),
+      505: ('HTTP Version Not Supported', 'Cannot fulfill request.'),
+      }
 
 
-class StreamRequestHandler(BaseRequestHandler):
+
+
+class BaseHTTPRequestHandler:
   rbufsize = -1
   wbufsize = 0
   timeout = None
   disable_nagle_algorithm = False
+
+  def __init__(self, request, client_address, server):
+      self.request = request
+      self.client_address = client_address
+      self.server = server
+      self.setup()
+      try:
+          self.handle()
+      finally:
+          self.finish()
 
   def setup(self):
     self.connection = self.request
@@ -63,34 +121,11 @@ class StreamRequestHandler(BaseRequestHandler):
 
       self.wfile.close()
       self.rfile.close()
-
-
-class BaseHTTPRequestHandler(StreamRequestHandler):
-  MessageClass = mimetools.Message
-  def parse_request(self):
-    requestsline = self.raw_requestline
-    requestsline = requestsline.rstrip('\r\n')
-    self.requestsline = requestsline
-    words = requestsline.split()
-    if len(words) ==3:
-      command,path,version = words
-      if version!='HTTP/1.1':
-        self.send_error(400,'Bad request version')
-        return False
-    else:
-      self.send_error(400,'Bad request')
-      return False
-    self.command,self.path,self.request_version = command,path,version
-    self.headers = self.MessageClass(self.rfile,0)
-    return True
-
-  def handle_one_requests(self):
+ 
+  def handle(self):
     try:
       self.raw_requestline = self.rfile.readline(65537)
       if len(self.raw_requestline)>65536:
-        self.requestsline =''
-        self.command = ''
-        self.send_error(414)
         return
       if not self.raw_requestline:
         return
@@ -105,44 +140,41 @@ class BaseHTTPRequestHandler(StreamRequestHandler):
     except socket.timeout as e:
       return
 
-  def handle(self):
-    self.handle_one_requests()
+  def parse_request(self):
+    requestsline = self.raw_requestline.rstrip('\r\n')
+    self.requestsline = requestsline
+    words = requestsline.split()
+    if len(words) == 3:
+      command,path,version = words
+      if version!='HTTP/1.1':
+        self.send_error(400,'Bad request version')
+        return False
+    else:
+      self.send_error(400,'Bad request')
+      return False
+    self.command,self.path,self.request_version = command,path,version
+    self.headers = mimetools.Message(self.rfile,0)
+    return True
 
   def send_error(self,code,message=None):
     self.end_headers()
-    content = message
+    if message:
+      content = message
+    else :
+      content = HTTP_STATUS_MSG.get(code,'')
     self.wfile.write(content)
  
   def send_response(self, code, message=None):
-        """Send the response header and log the response code.
-
-        Also send two standard headers with the server software
-        version and the current date.
-
-        """
         if message is None:
-            if code in self.responses:
-                message = self.responses[code][0]
+            if code in HTTP_STATUS_MSG:
+                message = HTTP_STATUS_MSG[code][0]
             else:
                 message = ''
-        if self.request_version != 'HTTP/0.9':
-            self.wfile.write("HTTP/1.1 %d %s\r\n" %
-                             (code, message))
-            # print (self.protocol_version, code, message)
-        # self.send_header('Server', self.version_string())
-        # self.send_header('Date', self.date_time_string())
+        self.wfile.write("HTTP/1.1 %d %s\r\n" % (code, message))
 
   def send_header(self, keyword, value):
-      """Send a MIME header."""
-      if self.request_version != 'HTTP/0.9':
-          self.wfile.write("%s: %s\r\n" % (keyword, value))
-
-      if keyword.lower() == 'connection':
-          if value.lower() == 'close':
-              self.close_connection = 1
-          elif value.lower() == 'keep-alive':
-              self.close_connection = 0
-
+      self.wfile.write("%s: %s\r\n" % (keyword, value))
+      
   def end_headers(self):
     self.wfile.write("\r\n")
 
@@ -170,11 +202,6 @@ class SimpleHTTPRequestsHandler(BaseHTTPRequestHandler):
         self.copyfile(f,self.wfile)
       finally:
         f.close()
-
-  # def do_HEAD(self):
-  #   f = self.send_head()
-  #   if f:
-  #     f.close()
 
   def send_head(self):
     path = self.translate_path(self.path)
@@ -260,71 +287,6 @@ class SimpleHTTPRequestsHandler(BaseHTTPRequestHandler):
   def copyfile(self,source ,outputfile):
     shutil.copyfileobj(source,outputfile)
 
-  responses = {
-        100: ('Continue', 'Request received, please continue'),
-        101: ('Switching Protocols',
-              'Switching to new protocol; obey Upgrade header'),
-
-        200: ('OK', 'Request fulfilled, document follows'),
-        201: ('Created', 'Document created, URL follows'),
-        202: ('Accepted',
-              'Request accepted, processing continues off-line'),
-        203: ('Non-Authoritative Information', 'Request fulfilled from cache'),
-        204: ('No Content', 'Request fulfilled, nothing follows'),
-        205: ('Reset Content', 'Clear input form for further input.'),
-        206: ('Partial Content', 'Partial content follows.'),
-
-        300: ('Multiple Choices',
-              'Object has several resources -- see URI list'),
-        301: ('Moved Permanently', 'Object moved permanently -- see URI list'),
-        302: ('Found', 'Object moved temporarily -- see URI list'),
-        303: ('See Other', 'Object moved -- see Method and URL list'),
-        304: ('Not Modified',
-              'Document has not changed since given time'),
-        305: ('Use Proxy',
-              'You must use proxy specified in Location to access this '
-              'resource.'),
-        307: ('Temporary Redirect',
-              'Object moved temporarily -- see URI list'),
-
-        400: ('Bad Request',
-              'Bad request syntax or unsupported method'),
-        401: ('Unauthorized',
-              'No permission -- see authorization schemes'),
-        402: ('Payment Required',
-              'No payment -- see charging schemes'),
-        403: ('Forbidden',
-              'Request forbidden -- authorization will not help'),
-        404: ('Not Found', 'Nothing matches the given URI'),
-        405: ('Method Not Allowed',
-              'Specified method is invalid for this resource.'),
-        406: ('Not Acceptable', 'URI not available in preferred format.'),
-        407: ('Proxy Authentication Required', 'You must authenticate with '
-              'this proxy before proceeding.'),
-        408: ('Request Timeout', 'Request timed out; try again later.'),
-        409: ('Conflict', 'Request conflict.'),
-        410: ('Gone',
-              'URI no longer exists and has been permanently removed.'),
-        411: ('Length Required', 'Client must specify Content-Length.'),
-        412: ('Precondition Failed', 'Precondition in headers is false.'),
-        413: ('Request Entity Too Large', 'Entity is too large.'),
-        414: ('Request-URI Too Long', 'URI is too long.'),
-        415: ('Unsupported Media Type', 'Entity body in unsupported format.'),
-        416: ('Requested Range Not Satisfiable',
-              'Cannot satisfy request range.'),
-        417: ('Expectation Failed',
-              'Expect condition could not be satisfied.'),
-
-        500: ('Internal Server Error', 'Server got itself in trouble'),
-        501: ('Not Implemented',
-              'Server does not support this operation'),
-        502: ('Bad Gateway', 'Invalid responses from another server/proxy.'),
-        503: ('Service Unavailable',
-              'The server cannot process the request due to a high load'),
-        504: ('Gateway Timeout',
-              'The gateway server did not receive a timely response'),
-        505: ('HTTP Version Not Supported', 'Cannot fulfill request.'),
-        }
 
 
 def _eintr_retry(func, *args):
@@ -411,6 +373,8 @@ class HTTPServer:
         self.RequestHandlerClass(request,client_address,self)
       except Exception as e:
         print(request,client_address,e)
+        import ipdb;ipdb.set_trace()
+        raise
 
 def main():
   port = 8000
