@@ -336,99 +336,46 @@ def _eintr_retry(func, *args):
             if e.args[0] != errno.EINTR:
                 raise
 
-
-class BaseServer:
-  def __init__(self,server_address,RequestHandlerClass):
-    self.server_address = server_address
-    self.RequestHandlerClass = RequestHandlerClass
-    self.__is_shut_down = threading.Event()
-    self.__shutdown_request = False
-  
-  def server_activate(self):
-    pass
-
-  def serve_forever(self,poll_interval=0.5):
-    self.__is_shut_down.clear()
-    try:
-      while not self.__shutdown_request:
-        r,w,e = _eintr_retry(select.select,[self],[],[],poll_interval)
-        if self in r:
-          self._handle_request_noblock()
-    finally :
-      self.__shutdown_request = False
-      self.__is_shut_down.set()
-
-  def shutdown(self):
-    self.__shutdown_request =True
-    self.__is_shut_down.wait()
-
-  def handle_request(self):
-    timeout = self.socket.gettimeout()
-    if timeout is None:
-      timeout = self.timeout
-    fd_sets = _eintr_retry(select.select,[self],[],[],timeout)
-    if not fd_sets[0]:
-      self.handle_timeout()
-      return
-    self._handle_request_noblock()
-
-  def _handle_request_noblock(self):
-    try:
-      request,client_address = self.get_request()
-    except socket.error:
-      return
-    if self.verify_request(request,client_address):
-      try:
-        self.process_request(request,client_address)
-      except:
-        self.handle_error(request,client_address)
-        self.shutdown_request(request)
-
-  def handle_timeout(self):
-    pass
-
-  def verify_request(self,request,client_address):
-    return True
-
-  def process_request(self,request,client_address):
-    self.finish_request(request,client_address)
-    self.shutdown_request(request)
-
-  def server_close():
-    pass
-
-  def finish_request(self,request,client_address):
-    self.RequestHandlerClass(request,client_address,self)
-
-  def shutdown_request(self,request):
-    self.close_request(request)
-
-  def close_request(self,request):
-    pass    
-
-  def handle_error(self,request,client_address):
-    pass
-
-
-class TCPServer(BaseServer):
+class HTTPServer:
     address_family = socket.AF_INET
     socket_type = socket.SOCK_STREAM
     request_queue_size = 5
     allow_reuse_address = False
+    allow_reuse_address = 1
 
     def __init__(self,server_address ,RequestHandlerClass,bind_and_activate=True):
-      BaseServer.__init__(self,server_address,RequestHandlerClass)
+      
+      self.server_address = server_address
+      self.RequestHandlerClass = RequestHandlerClass
+      self.__is_shut_down = threading.Event()
+      self.__shutdown_request = False
+
       self.socket = socket.socket(self.address_family,self.socket_type)
       if bind_and_activate:
         self.server_bind()
         self.server_activate()
 
+    def serve_forever(self,poll_interval=0.5):
+      self.__is_shut_down.clear()
+      try:
+        while not self.__shutdown_request:
+          r,w,e = _eintr_retry(select.select,[self],[],[],poll_interval)
+          if self in r:
+            self._handle_request_noblock()
+      finally :
+        self.__shutdown_request = False
+        self.__is_shut_down.set()
+    
     def server_bind(self):
       if self.allow_reuse_address:
         self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
       self.socket.bind(self.server_address)
       self.server_address = self.socket.getsockname()
 
+      host,port = self.socket.getsockname()[:2]
+      self.server_name = socket.getfqdn(host)
+      self.server_port = port
+    
 
     def server_activate(self):
       self.socket.listen(self.request_queue_size)
@@ -451,14 +398,57 @@ class TCPServer(BaseServer):
       self.close_request(request)
 
 
-class HTTPServer(TCPServer):
-  allow_reuse_address = 1
+    def shutdown(self):
+      self.__shutdown_request =True
+      self.__is_shut_down.wait()
 
-  def server_bind(self):
-    TCPServer.server_bind(self)
-    host,port = self.socket.getsockname()[:2]
-    self.server_name = socket.getfqdn(host)
-    self.server_port = port
+    def handle_request(self):
+      timeout = self.socket.gettimeout()
+      if timeout is None:
+        timeout = self.timeout
+      fd_sets = _eintr_retry(select.select,[self],[],[],timeout)
+      if not fd_sets[0]:
+        self.handle_timeout()
+        return
+      self._handle_request_noblock()
+
+    def _handle_request_noblock(self):
+      try:
+        request,client_address = self.get_request()
+      except socket.error:
+        return
+      if self.verify_request(request,client_address):
+        try:
+          self.process_request(request,client_address)
+        except:
+          self.handle_error(request,client_address)
+          self.shutdown_request(request)
+
+    def handle_timeout(self):
+      pass
+
+    def verify_request(self,request,client_address):
+      return True
+
+    def process_request(self,request,client_address):
+      self.finish_request(request,client_address)
+      self.shutdown_request(request)
+
+    def server_close():
+      pass
+
+    def finish_request(self,request,client_address):
+      self.RequestHandlerClass(request,client_address,self)
+
+    def shutdown_request(self,request):
+      self.close_request(request)
+
+    def close_request(self,request):
+      pass    
+
+    def handle_error(self,request,client_address):
+      pass
+
 
 
 def Base_test(HandlerClass = BaseHTTPRequestHandler,
