@@ -7,7 +7,6 @@ import shutil
 import select
 import mimetypes
 import socket
-import SocketServer
 import time
 import mimetools
 import threading
@@ -20,26 +19,29 @@ except ImportError :
 www_directory = "/home/wkc/project/ComputerNetworkCourseDesign/src/pythonHTTPServer/v3.bootcss.com"
 www_directory = "/home/wkc/project/ComputerNetworkCourseDesign/src/pythonHTTPServer/"
 
+
 class BaseRequestHandler:
-  def __init__(self,request,client_address,server):
-    self.request = request
-    self.client_address = client_address
-    self.server = server
-    try:
-      self.handle()
-    finally:
-      self.finish()
+    def __init__(self, request, client_address, server):
+        self.request = request
+        self.client_address = client_address
+        self.server = server
+        self.setup()
+        try:
+            self.handle()
+        finally:
+            self.finish()
 
-  def setup(self):
-    pass
+    def setup(self):
+        pass
 
-  def handle(self):
-    pass
+    def handle(self):
+        pass
 
-  def finish(self):
-    pass
+    def finish(self):
+        pass
 
-class StreamRequestHandler(SocketServer.BaseRequestHandler):
+
+class StreamRequestHandler(BaseRequestHandler):
   rbufsize = -1
   wbufsize = 0
   timeout = None
