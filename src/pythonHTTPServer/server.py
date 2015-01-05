@@ -19,6 +19,24 @@ except ImportError :
 www_directory = "/home/wkc/project/ComputerNetworkCourseDesign/src/pythonHTTPServer/v3.bootcss.com"
 www_directory = "/home/wkc/project/ComputerNetworkCourseDesign/src/pythonHTTPServer/"
 
+class BaseRequestHandler:
+  def __init__(self,request,client_address,server):
+    self.request = request
+    self.client_address = client_address
+    self.server = server
+    try:
+      self.handle()
+    finally:
+      self.finish()
+
+  def setup(self):
+    pass
+
+  def handle(self):
+    pass
+
+  def finish(self):
+    pass
 
 class StreamRequestHandler(SocketServer.BaseRequestHandler):
   rbufsize = -1
