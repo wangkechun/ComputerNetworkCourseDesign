@@ -20,7 +20,31 @@ www_directory = "/home/wkc/project/ComputerNetworkCourseDesign/src/pythonHTTPSer
 www_directory = "/home/wkc/project/ComputerNetworkCourseDesign/src/pythonHTTPServer/"
 
 
-class BaseHTTPRequestHandler(SocketServer.StreamRequestHandler):
+class StreamRequestHandler(SocketServer.BaseRequestHandler):
+  rbufsize = -1
+  wbufsize = 0
+  timeout = None
+  disable_nagle_algorithm = False
+
+  def setup(self):
+    self.connection = self.request
+    if self.timeout is not None:
+      self.connection.settimeout(self.timeout)
+    self.rfile = self.connection.makefile('rb',self.rbufsize)
+    self.wfile = self.connection.makefile('wb',self.rbufsize)
+
+  def finish(self):
+    if not self.wfile.closed:
+      try:
+        self.wfile.flush()
+      except socket.error:
+        pass
+
+      self.wfile.close()
+      self.rfile.close()
+
+
+class BaseHTTPRequestHandler(StreamRequestHandler):
   MessageClass = mimetools.Message
   def parse_request(self):
     requestsline = self.raw_requestline
@@ -151,7 +175,7 @@ class SimpleHTTPRequestsHandler(BaseHTTPRequestHandler):
         return self.list_directory(path)
     try:
       f = open(path,"rb")
-      
+
     except IOError:
       self.send_error(404,"File not found")
       return None
