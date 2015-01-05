@@ -337,11 +337,8 @@ def _eintr_retry(func, *args):
                 raise
 
 class HTTPServer:
-    address_family = socket.AF_INET
-    socket_type = socket.SOCK_STREAM
     request_queue_size = 5
-    allow_reuse_address = False
-    allow_reuse_address = 1
+    allow_reuse_address = True
 
     def __init__(self,server_address ,RequestHandlerClass,bind_and_activate=True):
       
@@ -350,10 +347,21 @@ class HTTPServer:
       self.__is_shut_down = threading.Event()
       self.__shutdown_request = False
 
-      self.socket = socket.socket(self.address_family,self.socket_type)
+      self.socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
       if bind_and_activate:
         self.server_bind()
-        self.server_activate()
+        self.socket.listen(self.request_queue_size)
+  
+    def server_bind(self):
+      if self.allow_reuse_address:
+        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+      self.socket.bind(self.server_address)
+      self.server_address = self.socket.getsockname() #('0.0.0.0', 8000)
+
+      host,port = self.socket.getsockname()[:2]
+      self.server_name = socket.getfqdn(host)
+      self.server_port = port
+
 
     def serve_forever(self,poll_interval=0.5):
       self.__is_shut_down.clear()
@@ -365,20 +373,6 @@ class HTTPServer:
       finally :
         self.__shutdown_request = False
         self.__is_shut_down.set()
-    
-    def server_bind(self):
-      if self.allow_reuse_address:
-        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-      self.socket.bind(self.server_address)
-      self.server_address = self.socket.getsockname()
-
-      host,port = self.socket.getsockname()[:2]
-      self.server_name = socket.getfqdn(host)
-      self.server_port = port
-    
-
-    def server_activate(self):
-      self.socket.listen(self.request_queue_size)
 
     def server_close(self):
       self.socket.close()
@@ -395,9 +389,6 @@ class HTTPServer:
       except socket.error:
         pass
 
-      self.close_request(request)
-
-
     def shutdown(self):
       self.__shutdown_request =True
       self.__is_shut_down.wait()
@@ -408,7 +399,6 @@ class HTTPServer:
         timeout = self.timeout
       fd_sets = _eintr_retry(select.select,[self],[],[],timeout)
       if not fd_sets[0]:
-        self.handle_timeout()
         return
       self._handle_request_noblock()
 
@@ -417,62 +407,19 @@ class HTTPServer:
         request,client_address = self.get_request()
       except socket.error:
         return
-      if self.verify_request(request,client_address):
-        try:
-          self.process_request(request,client_address)
-        except:
-          self.handle_error(request,client_address)
-          self.shutdown_request(request)
+      try:
+        self.RequestHandlerClass(request,client_address,self)
+      except Exception as e:
+        print(request,client_address,e)
 
-    def handle_timeout(self):
-      pass
-
-    def verify_request(self,request,client_address):
-      return True
-
-    def process_request(self,request,client_address):
-      self.finish_request(request,client_address)
-      self.shutdown_request(request)
-
-    def server_close():
-      pass
-
-    def finish_request(self,request,client_address):
-      self.RequestHandlerClass(request,client_address,self)
-
-    def shutdown_request(self,request):
-      self.close_request(request)
-
-    def close_request(self,request):
-      pass    
-
-    def handle_error(self,request,client_address):
-      pass
-
-
-
-def Base_test(HandlerClass = BaseHTTPRequestHandler,
-         ServerClass = HTTPServer, protocol="HTTP/1.0"):
-    if sys.argv[1:]:
-        port = int(sys.argv[1])
-    else:
-        port = 8000
-    server_address = ('', port)
-
-    HandlerClass.protocol_version = protocol
-    httpd = ServerClass(server_address, HandlerClass)
-
-    sa = httpd.socket.getsockname()
-    print "Serving HTTP on", sa[0], "port", sa[1], "..."
-    httpd.serve_forever()
-
-
-def test(HandleClass = SimpleHTTPRequestsHandler,
-  ServerClass = HTTPServer):
-  Base_test(HandleClass,ServerClass)
-
+def main():
+  port = 8000
+  server_address = ('',port)
+  httpd = HTTPServer(server_address, SimpleHTTPRequestsHandler)
+  sa = httpd.socket.getsockname()
+  print("Serving HTTP on", sa[0],"port",sa[1],"...")
+  httpd.serve_forever()
 
 if __name__ == '__main__':
-  test()
-
+  main()
 
