@@ -326,11 +326,53 @@ class SimpleHTTPRequestsHandler(BaseHTTPRequestHandler):
 
 import SocketServer
 
-class HTTPServer(SocketServer.TCPServer):
+
+class TCPServer(SocketServer.BaseServer):
+    address_family = socket.AF_INET
+    socket_type = socket.SOCK_STREAM
+    request_queue_size = 5
+    allow_reuse_address = False
+
+    def __init__(self,server_address ,RequestHandlerClass,bind_and_activate=True):
+      SocketServer.BaseServer.__init__(self,server_address,RequestHandlerClass)
+      self.socket = socket.socket(self.address_family,self.socket_type)
+      if bind_and_activate:
+        self.server_bind()
+        self.server_activate()
+
+    def server_bind(self):
+      if self.allow_reuse_address:
+        self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+      self.socket.bind(self.server_address)
+      self.server_address = self.socket.getsockname()
+
+
+    def server_activate(self):
+      self.socket.listen(self.request_queue_size)
+
+    def server_close(self):
+      self.socket.close()
+
+    def fileno(self):
+      return self.socket.fileno()
+
+    def get_request(self):
+      return self.socket.accept()
+
+    def shutdown_request(self,request):
+      try:
+        request.shutdown(socket.SHUT_WR)
+      except socket.error:
+        pass
+
+      self.close_request(request)
+
+
+class HTTPServer(TCPServer):
   allow_reuse_address = 1
 
   def server_bind(self):
-    SocketServer.TCPServer.server_bind(self)
+    TCPServer.server_bind(self)
     host,port = self.socket.getsockname()[:2]
     self.server_name = socket.getfqdn(host)
     self.server_port = port
