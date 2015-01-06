@@ -75,8 +75,6 @@ func (s *Server) ServeConn(conn net.Conn) {
 	}
 	conn.Write([]byte{5, 0xff})
 	log.Println("no accept methods")
-	return
-
 }
 
 func readMethods(n int, r io.Reader) ([]byte, error) {
@@ -100,7 +98,7 @@ const (
 	ipv6Address      = uint8(4)
 )
 
-func ServerConnAuthSuccess(rBuf *bufio.Reader, wBuf *bufio.Writer) error {
+func ServerConnAuthSuccess(rBuf *bufio.Reader, wBuf *bufio.Writer) {
 	header := []byte{0, 0, 0}
 	rBuf.Read(header)
 	if header[0] != 5 {
@@ -119,7 +117,6 @@ func ServerConnAuthSuccess(rBuf *bufio.Reader, wBuf *bufio.Writer) error {
 		rBuf.Read(addr)
 		d.IP = net.IP(addr)
 		log.Println("ipv6")
-
 	case fqdnAddress:
 		addrLen, _ := rBuf.ReadByte()
 		fqdn := make([]byte, addrLen)
@@ -128,7 +125,7 @@ func ServerConnAuthSuccess(rBuf *bufio.Reader, wBuf *bufio.Writer) error {
 		log.Println("host", d.FQDN)
 	default:
 		log.Println("unknow addr")
-		return nil
+		return
 	}
 	port := []byte{0, 0}
 	rBuf.Read(port)
@@ -138,7 +135,7 @@ func ServerConnAuthSuccess(rBuf *bufio.Reader, wBuf *bufio.Writer) error {
 		addr, err := net.ResolveIPAddr("ip", d.FQDN)
 		if err != nil {
 			log.Println("dns resolve error", d.FQDN, addr.String())
-			return nil
+			return
 		}
 		d.IP = addr.IP
 	}
@@ -146,15 +143,11 @@ func ServerConnAuthSuccess(rBuf *bufio.Reader, wBuf *bufio.Writer) error {
 	case connectCommand:
 		log.Println("connectCommand")
 		handleConnect(rBuf, wBuf, d)
-		return nil
-	case bindCommand:
-		return nil
-	case associateCommand:
-		return nil
+	// case bindCommand:
+	// case associateCommand:
 	default:
 		log.Println("unsupported command")
 	}
-	return nil
 }
 
 const (
