@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	// log "github.com/Sirupsen/logrus"
 	"github.com/k0kubun/pp"
 	"io"
 	"log"
@@ -16,30 +15,18 @@ var _ = fmt.Printf
 var _ = log.Fatalln
 var _ = pp.Fatalln
 
-type Config struct {
-}
 type Server struct {
-	config *Config
 }
 
-func New(conf *Config) (*Server, error) {
-
-	server := &Server{
-		config: conf,
-	}
-	return server, nil
-
-}
-
-func (s *Server) Serve(l net.Listener) error {
+func (s *Server) Serve(l net.Listener) {
 	for {
 		conn, err := l.Accept()
 		if err != nil {
-			return err
+			log.Println(err)
+		} else {
+			go s.ServeConn(conn)
 		}
-		go s.ServeConn(conn)
 	}
-	return nil
 }
 
 func (s *Server) ListenAndServe(network, addr string) error {
@@ -47,11 +34,18 @@ func (s *Server) ListenAndServe(network, addr string) error {
 	if err != nil {
 		return err
 	}
-	return s.Serve(l)
+	s.Serve(l)
+	return nil
 }
 
-func (s *Server) ServeConn(conn net.Conn) error {
+func (s *Server) ServeConn(conn net.Conn) {
+	defer func() {
+		if p := recover(); p != nil {
+			log.Println(p)
+		}
+	}()
 	defer conn.Close()
+
 	rBuf := bufio.NewReader(conn)
 	wBuf := bufio.NewWriter(conn)
 	VER, err := rBuf.ReadByte()
@@ -59,11 +53,11 @@ func (s *Server) ServeConn(conn net.Conn) error {
 
 	if err != nil {
 		log.Println(err)
-		return err
+		return
 	}
 	if VER != byte(5) {
 		log.Println("socks5 VER ERROR")
-		return nil
+		return
 	}
 	log.Printf("Have %d NMETHODS\n", NMETHODS)
 	methods, err := readMethods(int(NMETHODS), rBuf)
@@ -75,12 +69,14 @@ func (s *Server) ServeConn(conn net.Conn) error {
 	for _, method := range methods {
 		if method == 0 {
 			conn.Write([]byte{5, 0})
-			return ServerConnAuthSuccess(rBuf, wBuf)
+			ServerConnAuthSuccess(rBuf, wBuf)
+			return
 		}
 	}
 	conn.Write([]byte{5, 0xff})
 	log.Println("no accept methods")
-	return nil
+	return
+
 }
 
 func readMethods(n int, r io.Reader) ([]byte, error) {
@@ -137,7 +133,7 @@ func ServerConnAuthSuccess(rBuf *bufio.Reader, wBuf *bufio.Writer) error {
 	port := []byte{0, 0}
 	rBuf.Read(port)
 	d.Port = (int(port[0]) << 8) | int(port[1])
-	pp.Println(d, string(d.IP.String()))
+	// pp.Println(d, string(d.IP.String()))
 	if d.FQDN != "" {
 		addr, err := net.ResolveIPAddr("ip", d.FQDN)
 		if err != nil {
@@ -239,16 +235,6 @@ func proxy(name string, dst io.Writer, src io.Reader, errCh chan error) {
 	log.Printf("Copied %d bytes to %s", n, name)
 	time.Sleep(10 * time.Millisecond)
 	errCh <- err
-}
-
-func main() {
-	s, err := New(&Config{})
-	if err != nil {
-		log.Fatalln(err)
-	}
-	host := "0.0.0.0:8777"
-	log.Println("my-socks5-proxy run ", host)
-	s.ListenAndServe("tcp", host)
 }
 
 func init() {
