@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	// log "github.com/Sirupsen/logrus"
 	"github.com/k0kubun/pp"
 	"io"
 	"log"
@@ -138,9 +139,9 @@ func ServerConnAuthSuccess(rBuf *bufio.Reader, wBuf *bufio.Writer) error {
 	d.Port = (int(port[0]) << 8) | int(port[1])
 	pp.Println(d, string(d.IP.String()))
 	if d.FQDN != "" {
-		addr, err := net.ResolveIPAddr("tcp", d.FQDN)
+		addr, err := net.ResolveIPAddr("ip", d.FQDN)
 		if err != nil {
-			log.Println("dns resolve error")
+			log.Println("dns resolve error", d.FQDN, addr.String())
 			return nil
 		}
 		d.IP = addr.IP
@@ -245,5 +246,11 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	log.Println(s.ListenAndServe("tcp", "0.0.0.0:8777"))
+	host := "0.0.0.0:8777"
+	log.Println("my-socks5-proxy run ", host)
+	s.ListenAndServe("tcp", host)
+}
+
+func init() {
+	log.SetFlags(log.Ltime | log.Lshortfile)
 }
