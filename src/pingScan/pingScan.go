@@ -171,17 +171,31 @@ func PingList(hostList []string) {
 
 }
 
+func max(a, b int) int {
+	if a >= b {
+		return a
+	}
+	return b
+}
+
+func min(a, b int) int {
+	if a <= b {
+		return a
+	}
+	return b
+}
+
 func main() {
 	hosts := make([]string, 0)
-	for j := 1; j < 255; j++ {
+	for j := 12; j < 13; j++ {
 		for i := 1; i < 255; i++ {
 			host := fmt.Sprintf("10.1.%d.%d", j, i)
 			hosts = append(hosts, host)
 		}
 	}
-	every_limit := 200
+	every_limit := 300
 	for i := 0; i < len(hosts); i += every_limit {
 		fmt.Println("now:", hosts[i])
-		PingList(hosts[i : i+every_limit])
+		PingList(hosts[i:min(i+every_limit, len(hosts))])
 	}
 }
