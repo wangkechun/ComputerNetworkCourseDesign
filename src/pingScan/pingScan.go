@@ -3,12 +3,15 @@ package main
 import (
 	"bytes"
 	"encoding/binary"
+	// "io"
+	// "errors"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -75,6 +78,10 @@ func ping(host string) (re PingReturn) {
 	}
 	conn, err := net.DialIP("ip4:icmp", nil, raddr)
 	if err != nil {
+		if strings.Index(err.Error(), "operation not permitted") != -1 {
+			log.Fatalln("operation not permitted, please run it by sudo")
+		}
+		fmt.Printf("%+v\n", err.Error())
 		PingLogger.Println(err)
 		re.msg = "dial error"
 		re.err = err
@@ -187,13 +194,28 @@ func min(a, b int) int {
 
 func main() {
 	hosts := make([]string, 0)
-	for j := 12; j < 13; j++ {
+	for j := 1; j < 255; j++ {
 		for i := 1; i < 255; i++ {
 			host := fmt.Sprintf("10.1.%d.%d", j, i)
 			hosts = append(hosts, host)
 		}
 	}
-	every_limit := 300
+	every_limit := 1000
+	for i := 0; i < len(hosts); i += every_limit {
+		fmt.Println("now:", hosts[i])
+		PingList(hosts[i:min(i+every_limit, len(hosts))])
+	}
+}
+
+func main2() {
+	hosts := make([]string, 0)
+	for j := 1; j < 255; j++ {
+		for i := 1; i < 255; i++ {
+			host := fmt.Sprintf("125.221.%d.%d", j, i)
+			hosts = append(hosts, host)
+		}
+	}
+	every_limit := 60000
 	for i := 0; i < len(hosts); i += every_limit {
 		fmt.Println("now:", hosts[i])
 		PingList(hosts[i:min(i+every_limit, len(hosts))])
