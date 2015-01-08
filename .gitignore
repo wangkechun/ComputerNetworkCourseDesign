@@ -1,5 +1,7 @@
 *.pyc
 bin/*
-src/pythonHTTPServer/v3.bootcss.com
+src/ok/pythonHTTPServer/v3.bootcss.com
 
-src/pythonHTTPServer/.idea/
+src/ok/pythonHTTPServer/.idea/
+
+src/ok/bin
