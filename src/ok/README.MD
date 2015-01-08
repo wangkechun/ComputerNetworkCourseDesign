@@ -4,11 +4,11 @@
 
 ##简单Web Server程序的设计与实现
 ###pythonHTTPServer
-跨平台 linux/win/arm...
-这是用python实现的一个简单的HTTP服务器
-使用方式: `python server.py  --port 10001 --www "./"`
-默认端口: `:8000` \
-默认www目录: 当前目录
+- 跨平台 linux/win/arm...
+- 这是用python实现的一个简单的HTTP服务器
+- 使用方式: `python server.py  --port 10001 --www "./"`
+- 默认端口: `:8000` 
+- 默认www目录: 当前目录
 
 - 支持协议版本为HTTP1.1
 - 目前支持GET.
@@ -73,11 +73,12 @@ https://github.com/wangkechun/go-multi-IP-acceleration
 简而言之就是可以逸夫楼的网络下实现带宽叠加(突破路由器的带宽分配策略),迅雷下载速度轻松突破1MB/s. 
 
 Todo:
-同时支持HTTP代理和SOCKS5代理
-自动检测被墙网站,并使用goagent ,shadowsocks作为二级代理
-支持简单的负载均衡
-实现一个类似shadowsocks的工具,可以实现简单的翻墙功能
-实现ssh隧道类似的功能, 可以用于内网端口转发,内网映射(如:在校外访问校内资源)
+
+- 同时支持HTTP代理和SOCKS5代理
+- 自动检测被墙网站,并使用goagent ,shadowsocks作为二级代理
+- 支持简单的负载均衡
+- 实现一个类似shadowsocks的工具,可以实现简单的翻墙功能
+- 实现ssh隧道类似的功能, 可以用于内网端口转发,内网映射(如:在校外访问校内资源)
 
 
 ----------
@@ -89,12 +90,15 @@ Todo:
 
 ###Ping2
 这是对linux下的工具ping的一个简单模仿
-Usage of ./ping2:
-  -host="www.baidu.com": usage: -host=baidu.com
-  -times=3: usage: -times=3
+
+    Usage of ./ping2:
+      -host="www.baidu.com": usage: -host=baidu.com
+      -times=3: usage: -times=3
 实现语言: golang , 支持平台 *nix, win, arm...
+
 注意在 *nix下使用需要root权限运行
-使用效果如下:
+
+####使用效果如下:
 
     ➜  bin git:(master) ✗ sudo ./ping2
     2015/01/08 14:52:19 Ping  www.baidu.com
@@ -169,16 +173,17 @@ Usage of ./ping2:
 ##网络聊天程序的设计与实现
 ###simpleChat
 功能:
-可以实现群聊,点对点聊天
-客户端可以使用netcat
-使用说明, 运行服务器 `./simpleChat --port 9000`
-然后 客户端运行 `nc localhost 9000`
-就会提示输入昵称,确定之后就可以进入聊天室
-输入/name msg可以发送消息msg给昵称为name的用户
-其它任意字符则为群发
-任一用户下线或者上线其它用户都会接收到通知.
+- 可以实现群聊,点对点聊天
+- 客户端可以使用netcat
+- 使用说明, 运行服务器 `./simpleChat --port 9000`
+- 然后 客户端运行 `nc localhost 9000`
+- 就会提示输入昵称,确定之后就可以进入聊天室
+- 输入/name msg可以发送消息msg给昵称为name的用户
+- 其它任意字符则为群发
+- 任一用户下线或者上线其它用户都会接收到通知.
 
 服务器运行效果:
+
     ➜  bin git:(master) ✗ fab simpleChat_test
     [localhost] local: go build cs/ok/simpleChat
     [localhost] local: ./simpleChat
