@@ -49,6 +49,10 @@ def clear():
 def simpleChat(cmd="go build"):
 	local(cmd+" cs/ok/simpleChat")
 
+def simpleChat_test():
+	simpleChat()
+	local("./simpleChat")
+
 def http():
 	with lcd("../pythonHTTPServer"):
 		local("python server.py")

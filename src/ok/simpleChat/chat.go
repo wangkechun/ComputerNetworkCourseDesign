@@ -2,11 +2,13 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"io"
 	"log"
 	"net"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -58,7 +60,7 @@ func (client *Client) Read() {
 			}
 		} else {
 			msg := fmt.Sprintf("%s: %s\n", client.name, line)
-			Log.Println(msg)
+			Log.Println(dealBr(msg))
 			brodCast(msg)
 		}
 	}
@@ -77,7 +79,7 @@ func (client *Client) Listen() {
 }
 
 func brodCast(msg string) {
-	Log.Println("brodCast", msg)
+	Log.Println("brodCast", dealBr(msg))
 	for _, v := range onlineClients {
 		v.outgoing <- dealBr(msg) + "\n"
 	}
@@ -112,20 +114,24 @@ Online user %d:
 	writer.WriteString(msg)
 	writer.Flush()
 	msg = fmt.Sprintf("New user %s %s\n", name, client.ip)
-	Log.Println(msg)
+	Log.Println(dealBr(msg))
 	brodCast(msg)
 	client.Listen()
 	return client
 }
 
 var onlineClients map[string](*Client)
+var port = flag.Int("port", 6666, "port=6666 ")
 
 func main() {
 	onlineClients = make(map[string](*Client), 0)
-	listener, err := net.Listen("tcp", ":6666")
+	listener, err := net.Listen("tcp", "0.0.0.0:"+strconv.Itoa(*port))
 	if err != nil {
 		Log.Fatalln(err)
 	}
+	log.Println("simpleChat run on ", "0.0.0.0:"+strconv.Itoa(*port))
+	log.Println("please type \"nc serverip youport\" to connect it")
+	log.Println("for example: nc localhost 6666")
 	for {
 		conn, _ := listener.Accept()
 		c := NewClient(conn)
@@ -136,4 +142,5 @@ func init() {
 	Log = log.New(os.Stdin,
 		"TRACE: ",
 		log.Ldate|log.Ltime|log.Lshortfile)
+	flag.Parse()
 }
