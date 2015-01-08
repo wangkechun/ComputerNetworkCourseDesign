@@ -134,6 +134,7 @@ class BaseHTTPRequestHandler:
 
 class SimpleHTTPRequestsHandler(BaseHTTPRequestHandler):
     def do_GET(self):
+        print("GET "+self.path)
         f = self.send_head()
         if f:
             try:
