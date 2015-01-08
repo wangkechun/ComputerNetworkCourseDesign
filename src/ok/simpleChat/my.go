@@ -15,7 +15,6 @@ var _ = fmt.Println
 var Log *log.Logger
 
 type Client struct {
-	// incoming chan string
 	outgoing chan string
 	reader   *bufio.Reader
 	writer   *bufio.Writer
@@ -92,7 +91,6 @@ func NewClient(connection net.Conn) *Client {
 	name, _ := reader.ReadString('\n')
 	name = strings.Replace(name, "\n", "", -1)
 	client := &Client{
-		// incoming: make(chan string),
 		outgoing: make(chan string),
 		reader:   reader,
 		writer:   writer,
