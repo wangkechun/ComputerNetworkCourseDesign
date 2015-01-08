@@ -76,4 +76,138 @@ Todo:
 同时支持HTTP代理和SOCKS5代理
 自动检测被墙网站,并使用goagent ,shadowsocks作为二级代理
 支持简单的负载均衡
-实现一个类似shadowsocks的工具,E
+实现一个类似shadowsocks的工具,可以实现简单的翻墙功能
+实现ssh隧道类似的功能, 可以用于内网端口转发,内网映射(如:在校外访问校内资源)
+
+
+----------
+##Tracert与Ping程序设计与实现
+
+> 参照附录2，了解Tracert程序的实现原理，并调试通过。然后参考Tracert程序和教材4.4.2节，编写一个Ping程序，并能测试本局域网的所有机器是否在线，运行界面如图1所示的QuickPing程序。
+
+------
+
+###Ping2
+这是对linux下的工具ping的一个简单模仿
+Usage of ./ping2:
+  -host="www.baidu.com": usage: -host=baidu.com
+  -times=3: usage: -times=3
+实现语言: golang , 支持平台 *nix, win, arm...
+注意在 *nix下使用需要root权限运行
+使用效果如下:
+
+    ➜  bin git:(master) ✗ sudo ./ping2
+    2015/01/08 14:52:19 Ping  www.baidu.com
+    2015/01/08 14:52:19 IP: 180.97.33.108
+    2015/01/08 14:52:19 Runing Ping data  [8 0 247 255] [0 0 0 0] 
+    2015/01/08 14:52:19 Recv data  [69 0 0 28] [59 75 64 0] [49 1 221 28] [180 97 33 108] [192 168 155 3] [0 0 255 255] [0 0 0 0] 
+    2015/01/08 14:52:19 Time spend ms 97
+    2015/01/08 14:52:19 
+    2015/01/08 14:52:20 Ping  www.baidu.com
+    2015/01/08 14:52:20 IP: 180.97.33.108
+    2015/01/08 14:52:20 Runing Ping data  [8 0 247 255] [0 0 0 0] 
+    2015/01/08 14:52:20 Recv data  [69 0 0 28] [59 158 64 0] [49 1 220 201] [180 97 33 108] [192 168 155 3] [0 0 255 255] [0 0 0 0] 
+    2015/01/08 14:52:20 Time spend ms 91
+    2015/01/08 14:52:20 
+    2015/01/08 14:52:21 Ping  www.baidu.com
+    2015/01/08 14:52:21 IP: 180.97.33.108
+    2015/01/08 14:52:21 Runing Ping data  [8 0 247 255] [0 0 0 0] 
+    2015/01/08 14:52:21 Recv data  [69 0 0 28] [60 35 64 0] [49 1 220 68] [180 97 33 108] [192 168 155 3] [0 0 255 255] [0 0 0 0] 
+    2015/01/08 14:52:21 Time spend ms 114
+
+---------
+###pingScan
+这是一个简单快速的在线主机扫描工具
+功能: 
+
+ - 可以快速探测局域网内的在线主机
+ - 拥有极快的扫描速度,可以超过nmap
+ - 可以命令行指定ping超时时间,以及没有新结果的等待时间
+ - 可以及其方便的指定IP段. 如10.1.1-12.1-255 代表10.1.1.1->10.1.12.255之前的所有IP
+ 
+
+> 并发扫描采用golang自带的goroutine实现(类似于协程),而不是通常的多线程实现,可以同时发起上万请求而不会向使用线程一样占用大量CPU.
+> 在linux系统下通过修改一些参数即可实现万级并发,详见
+    http://blog.csdn.net/guowake/article/details/6615728
+
+
+
+使用说明:
+
+    ➜  bin git:(master) ✗ sudo ./pingScan   --help
+    Usage of ./pingScan:
+      -ip="10.1.12.1-255": 
+      -n=255: Number of requests to perform
+      -t=3000: Millisecond of ping timeout
+      -w=3: Second wait after no ans
+
+
+效果如下:
+
+    ➜  bin git:(master) ✗ time fab pingScan_test
+    [localhost] local: go build cs/ok/pingScan
+    [localhost] local: sudo ./pingScan  -ip="10.1.8.1-255" -n=300 -t=3000 -w=2
+    10.1.8.1-255
+    now: 10.1.8.1
+    all:255 over:44 pre:0.000000
+    all:255 over:44 pre:0.000000
+    timeout  2
+    ip:10.1.8.1 success:true
+    ip:10.1.8.112 success:true
+    ip:10.1.8.111 success:true
+    ip:10.1.8.110 success:true
+    ip:10.1.8.109 success:true
+    ip:10.1.8.104 success:true
+    ...
+    ###########################
+    success:44 error:0
+    Done.
+    fab pingScan_test  0.40s user 0.17s system 20% cpu 2.846 total
+
+
+------
+##网络聊天程序的设计与实现
+###simpleChat
+功能:
+可以实现群聊,点对点聊天
+客户端可以使用netcat
+使用说明, 运行服务器 `./simpleChat --port 9000`
+然后 客户端运行 `nc localhost 9000`
+就会提示输入昵称,确定之后就可以进入聊天室
+输入/name msg可以发送消息msg给昵称为name的用户
+其它任意字符则为群发
+任一用户下线或者上线其它用户都会接收到通知.
+
+服务器运行效果:
+    ➜  bin git:(master) ✗ fab simpleChat_test
+    [localhost] local: go build cs/ok/simpleChat
+    [localhost] local: ./simpleChat
+    2015/01/08 15:28:20 simpleChat run on  0.0.0.0:6666
+    2015/01/08 15:28:20 please type "nc serverip youport" to connect it
+    2015/01/08 15:28:20 for example: nc localhost 6666
+    TRACE: 2015/01/08 15:28:23 chat.go:117: New user asd 127.0.0.1:46206
+    TRACE: 2015/01/08 15:28:23 chat.go:82: brodCast New user asd 127.0.0.1:46206
+    TRACE: 2015/01/08 15:28:25 chat.go:63: asd: das
+    TRACE: 2015/01/08 15:28:25 chat.go:82: brodCast asd: das
+    TRACE: 2015/01/08 15:28:26 chat.go:63: asd: asd
+    TRACE: 2015/01/08 15:28:26 chat.go:82: brodCast asd: asd
+    TRACE: 2015/01/08 15:28:26 chat.go:63: asd: asd
+    TRACE: 2015/01/08 15:28:26 chat.go:82: brodCast asd: asd
+
+客户端运行效果:
+
+    ➜  ~  nc localhost 6666
+    Input you name:asd
+    You name:asd
+    You ip:127.0.0.1:46206
+    type "/name msg" to chat 
+    type "msg" to broadcast
+    Online user 0:
+    das
+    asd: das
+    asd
+    asd: asd
+    asd
+    asd: asd
+    ^C
+
