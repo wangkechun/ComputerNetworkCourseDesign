@@ -19,6 +19,7 @@ def all(cmd):
 	ping2(cmd)
 	pingScan(cmd)
 	socks5Proxy(cmd)
+	simpleChat(cmd)
 
 def ping2(cmd="go build"):
 	local(cmd+" cs/ok/ping2")
@@ -45,7 +46,8 @@ def socks5Proxy_test():
 def clear():
 	local("find . -maxdepth 1 -type f -perm /111 -exec rm {} \;")
 
-
+def simpleChat(cmd="go build"):
+	local(cmd+" cs/ok/simpleChat")
 
 def http():
 	with lcd("../pythonHTTPServer"):
