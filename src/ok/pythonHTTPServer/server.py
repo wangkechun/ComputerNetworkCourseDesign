@@ -19,9 +19,10 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-www_directory = "./"
 
 HTTP_STATUS_MSG = BaseHTTPServer.BaseHTTPRequestHandler.responses
+
+www_directory = './'
 
 
 class BaseHTTPRequestHandler:
@@ -245,7 +246,6 @@ class HTTPServer:
         self.RequestHandlerClass = RequestHandlerClass
         self.__is_shut_down = threading.Event()
         self.__shutdown_request = False
-
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         if bind_and_activate:
             self.server_bind()
@@ -301,20 +301,24 @@ class HTTPServer:
             raise
 
 
-www_directory = "./"
 
 
-def main():
-    port = 8000
+def server(port=8000,_www_directory="./"):
+    global www_directory
+    www_directory = _www_directory
     server_address = ('', port)
     httpd = HTTPServer(server_address, SimpleHTTPRequestsHandler)
     sa = httpd.socket.getsockname()
     print("Serving HTTP on %s, port %s ..." % (sa[0], sa[1]))
-    print("open http://127.0.0.1:8000")
+    print("open http://127.0.0.1:"+str(port))
     httpd.serve_forever()
 
 if __name__ == '__main__':
-    main()
-
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--port', help='',default=8000,type=int)
+    parser.add_argument('--www', help='',default='./')
+    args = parser.parse_args()
+    server(args.port,args.www)
 
 
