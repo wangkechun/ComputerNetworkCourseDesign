@@ -23,8 +23,16 @@ def all(cmd):
 def ping2(cmd="go build"):
 	local(cmd+" cs/ok/ping2")
 
+def ping2_test():
+	ping2()
+	local("fab ping2 && sudo ./ping2 -host t.cn -times=2")
+
 def pingScan(cmd="go build"):
 	local(cmd+" cs/ok/pingScan")
+
+def pingScan_test():
+	pingScan()
+	local('sudo ./pingScan  -ip="10.1.8.1-255" -n=300 -t=3000 -w=2')
 
 def socks5Proxy(cmd="go build"):
 	local(cmd+" cs/ok/socks5Proxy")

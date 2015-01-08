@@ -4,13 +4,14 @@ import (
 	"bytes"
 	"encoding/binary"
 	// "io"
-	// "errors"
+	"errors"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -41,13 +42,6 @@ type PingReturn struct {
 
 var PingLogger *log.Logger
 
-func init() {
-	PingLogger = log.New(ioutil.Discard,
-		"TRACE: ",
-		log.Ldate|log.Ltime|log.Lshortfile)
-
-}
-
 func CheckSum(data []byte) uint16 {
 	length := len(data)
 	var sum uint32
@@ -63,7 +57,7 @@ func CheckSum(data []byte) uint16 {
 	return uint16(^sum)
 }
 
-func ping(host string) (re PingReturn) {
+func ping(host string, timeLimit int) (re PingReturn) {
 	re.success = false
 	re.host = host
 	PingLogger.Println("Ping ", host)
@@ -100,10 +94,12 @@ func ping(host string) (re PingReturn) {
 	icmp.Checksum = CheckSum(buffer.Bytes())
 	buffer.Reset()
 	binary.Write(&buffer, binary.BigEndian, icmp)
-	PingLogger.Println("Runing Ping data ", printByte(buffer.Bytes()))
+	PingLogger.Println("Runing Ping data ",
+		printByte(buffer.Bytes()))
 	conn.Write(buffer.Bytes())
 	t_start := time.Now()
-	conn.SetReadDeadline((time.Now().Add(time.Second * 10)))
+	conn.SetReadDeadline((time.Now().Add(
+		time.Duration(timeLimit) * time.Millisecond)))
 	recv := make([]byte, 100)
 	recv_len, err := conn.Read(recv)
 	if err != nil {
@@ -130,7 +126,7 @@ func printByte(b []byte) (r string) {
 	return
 }
 
-func PingList(hostList []string) {
+func PingList(hostList []string, waitTime int, timeLimit int) {
 	successAlive := make([]PingReturn, 0)
 	noRet := make(chan PingReturn, 255)
 	var ticker *time.Ticker
@@ -146,23 +142,27 @@ func PingList(hostList []string) {
 	}()
 	for _, v := range hostList {
 		go func(v string) {
-			r := ping(v)
+			r := ping(v, timeLimit)
 			// print("*")
 			noRet <- r
 		}(v)
 	}
-
-	for {
-		select {
-		case <-time.After(time.Second * 3):
-			fmt.Println("timeout 3")
+	func() {
+		for {
+			select {
+			case <-time.After(time.Second * time.Duration(waitTime)):
+				fmt.Println("timeout ", waitTime)
+				return
+			case r := <-noRet:
+				successAlive = append(successAlive, r)
+				if len(successAlive) == len(hostList) {
+					return
+				}
+				continue
+			}
 			break
-		case r := <-noRet:
-			successAlive = append(successAlive, r)
-			continue
 		}
-		break
-	}
+	}()
 
 	var suc, err int
 	for _, v := range successAlive {
@@ -192,32 +192,73 @@ func min(a, b int) int {
 	return b
 }
 
-func main() {
-	hosts := make([]string, 0)
-	for j := 1; j < 255; j++ {
-		for i := 1; i < 255; i++ {
-			host := fmt.Sprintf("10.1.%d.%d", j, i)
-			hosts = append(hosts, host)
-		}
-	}
-	every_limit := 1000
-	for i := 0; i < len(hosts); i += every_limit {
-		fmt.Println("now:", hosts[i])
-		PingList(hosts[i:min(i+every_limit, len(hosts))])
+func parseTwoInt(s string) (l, r int, err error) {
+	switch strings.Count(s, "-") {
+	case 0:
+		n, _ := strconv.Atoi(s)
+		return n, n + 1, nil
+	case 1:
+		sp := strings.SplitN(s, "-", 2)
+		l, _ = strconv.Atoi(sp[0])
+		r, _ = strconv.Atoi(sp[1])
+		return l, r + 1, nil
+	default:
+		return 0, 1, errors.New("IP interval illegal ")
 	}
 }
 
-func main2() {
-	hosts := make([]string, 0)
-	for j := 1; j < 255; j++ {
-		for i := 1; i < 255; i++ {
-			host := fmt.Sprintf("125.221.%d.%d", j, i)
-			hosts = append(hosts, host)
+func parseIPList(IPInterval string) ([]string, error) {
+	ip := strings.SplitN(IPInterval, ".", 4)
+	ips := make([]string, 0)
+	if len(ip) != 4 {
+		return ips, errors.New("IP interval illegal ")
+	}
+	for l0, r0, err := parseTwoInt(ip[0]); l0 < r0; l0++ {
+		if err != nil {
+			return ips, errors.New("IP interval illegal ")
+		}
+		for l1, r1, _ := parseTwoInt(ip[1]); l1 < r1; l1++ {
+			if err != nil {
+				return ips, errors.New("IP interval illegal ")
+			}
+			for l2, r2, _ := parseTwoInt(ip[2]); l2 < r2; l2++ {
+				if err != nil {
+					return ips, errors.New("IP interval illegal ")
+				}
+				for l3, r3, _ := parseTwoInt(ip[3]); l3 < r3; l3++ {
+					if err != nil {
+						return ips, errors.New("IP interval illegal ")
+					}
+					now := fmt.Sprintf("%d.%d.%d.%d", l0, l1, l2, l3)
+					ips = append(ips, now)
+				}
+			}
 		}
 	}
-	every_limit := 60000
-	for i := 0; i < len(hosts); i += every_limit {
-		fmt.Println("now:", hosts[i])
-		PingList(hosts[i:min(i+every_limit, len(hosts))])
+	return ips, nil
+}
+
+func init() {
+	PingLogger = log.New(ioutil.Discard,
+		"TRACE: ",
+		log.Ldate|log.Ltime|log.Lshortfile)
+	flag.Parse()
+}
+
+var ipInterval = flag.String("ip", "10.1.12.1-255", "")
+var numRequests = flag.Int("n", 255, "Number of requests to perform")
+var timeLimit = flag.Int("t", 3000, "Millisecond of ping timeout")
+var waitTime = flag.Int("w", 3, "Second wait after no ans")
+
+func main() {
+	fmt.Println(*ipInterval)
+	ips, err := parseIPList(*ipInterval)
+	if err != nil {
+		log.Fatal(err)
+	}
+	every_limit := *numRequests
+	for i := 0; i < len(ips); i += every_limit {
+		fmt.Println("now:", ips[i])
+		PingList(ips[i:min(i+every_limit, len(ips))], *waitTime, *timeLimit)
 	}
 }

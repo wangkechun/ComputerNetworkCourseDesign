@@ -10,12 +10,6 @@ import (
 	"time"
 )
 
-var _ = bytes.MinRead
-var _ = binary.MaxVarintLen16
-var _ = fmt.Scanln
-var _ = log.Println
-var _ = time.ANSIC
-
 type ICMP struct {
 	Type        uint8
 	Code        uint8
@@ -90,10 +84,15 @@ func printByte(b []byte) (r string) {
 	return
 }
 
-func main() {
-	var host = flag.String("host", "www.baidu.com", "usage: -host=baidu.com")
+var host = flag.String("host", "www.baidu.com", "usage: -host=baidu.com")
+var times = flag.Int("times", 3, "usage: -times=3")
+
+func init() {
 	flag.Parse()
-	for i := 0; i < 2; i++ {
+}
+
+func main() {
+	for i := 0; i < *times; i++ {
 		// ping("125.221.232.253")
 		ping(*host)
 		time.Sleep(time.Second / 2)
