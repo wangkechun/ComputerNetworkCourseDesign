@@ -1,0 +1,145 @@
+now: 10.1.1.1
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+now: 10.1.119.29
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+all:30000 over:0 pre:0.000000
+timeout 3
+###########################
+success:0 error:0
+now: 10.1.237.57
+all:4516 over:117 pre:0.000000
+all:4516 over:117 pre:0.000000
+all:4516 over:117 pre:0.000000
+all:4516 over:117 pre:0.000000
+timeout 3
+ip:10.1.249.192 success:true
+ip:10.1.249.193 success:true
+ip:10.1.249.194 success:true
+ip:10.1.249.195 success:true
+ip:10.1.249.196 success:true
+ip:10.1.249.197 success:true
+ip:10.1.249.198 success:true
+ip:10.1.249.199 success:true
+ip:10.1.249.200 success:true
+ip:10.1.249.201 success:true
+ip:10.1.249.204 success:true
+ip:10.1.249.205 success:true
+ip:10.1.249.206 success:true
+ip:10.1.249.207 success:true
+ip:10.1.249.208 success:true
+ip:10.1.249.209 success:true
+ip:10.1.249.210 success:true
+ip:10.1.249.211 success:true
+ip:10.1.249.212 success:true
+ip:10.1.249.213 success:true
+ip:10.1.249.216 success:true
+ip:10.1.249.217 success:true
+ip:10.1.249.218 success:true
+ip:10.1.249.219 success:true
+ip:10.1.249.220 success:true
+ip:10.1.249.221 success:true
+ip:10.1.249.222 success:true
+ip:10.1.249.223 success:true
+ip:10.1.249.224 success:true
+ip:10.1.249.225 success:true
+ip:10.1.249.228 success:true
+ip:10.1.249.229 success:true
+ip:10.1.249.230 success:true
+ip:10.1.250.106 success:true
+ip:10.1.249.232 success:true
+ip:10.1.249.233 success:true
+ip:10.1.249.234 success:true
+ip:10.1.249.237 success:true
+ip:10.1.249.238 success:true
+ip:10.1.250.64 success:true
+ip:10.1.249.239 success:true
+ip:10.1.249.240 success:true
+ip:10.1.249.245 success:true
+ip:10.1.249.246 success:true
+ip:10.1.249.247 success:true
+ip:10.1.249.250 success:true
+ip:10.1.249.251 success:true
+ip:10.1.249.254 success:true
+ip:10.1.250.1 success:true
+ip:10.1.250.2 success:true
+ip:10.1.250.5 success:true
+ip:10.1.250.7 success:true
+ip:10.1.250.8 success:true
+ip:10.1.250.11 success:true
+ip:10.1.250.12 success:true
+ip:10.1.250.13 success:true
+ip:10.1.250.14 success:true
+ip:10.1.250.15 success:true
+ip:10.1.250.16 success:true
+ip:10.1.250.17 success:true
+ip:10.1.250.18 success:true
+ip:10.1.250.19 success:true
+ip:10.1.250.24 success:true
+ip:10.1.250.25 success:true
+ip:10.1.250.26 success:true
+ip:10.1.250.27 success:true
+ip:10.1.250.28 success:true
+ip:10.1.250.29 success:true
+ip:10.1.250.30 success:true
+ip:10.1.250.31 success:true
+ip:10.1.251.150 success:true
+ip:10.1.251.151 success:true
+ip:10.1.251.152 success:true
+ip:10.1.251.153 success:true
+ip:10.1.251.154 success:true
+ip:10.1.251.201 success:true
+ip:10.1.251.155 success:true
+ip:10.1.251.156 success:true
+ip:10.1.251.157 success:true
+ip:10.1.251.158 success:true
+ip:10.1.251.159 success:true
+ip:10.1.251.160 success:true
+ip:10.1.251.161 success:true
+ip:10.1.251.162 success:true
+ip:10.1.251.163 success:true
+ip:10.1.251.164 success:true
+ip:10.1.251.165 success:true
+ip:10.1.251.166 success:true
+ip:10.1.251.167 success:true
+ip:10.1.251.168 success:true
+ip:10.1.251.171 success:true
+ip:10.1.251.172 success:true
+ip:10.1.251.173 success:true
+ip:10.1.251.174 success:true
+ip:10.1.251.175 success:true
+ip:10.1.251.176 success:true
+ip:10.1.251.177 success:true
+ip:10.1.251.178 success:true
+ip:10.1.251.179 success:true
+ip:10.1.251.180 success:true
+ip:10.1.251.181 success:true
+ip:10.1.251.182 success:true
+ip:10.1.251.185 success:true
+ip:10.1.251.186 success:true
+ip:10.1.251.187 success:true
+ip:10.1.251.188 success:true
+ip:10.1.251.189 success:true
+ip:10.1.251.190 success:true
+ip:10.1.251.191 success:true
+ip:10.1.251.192 success:true
+ip:10.1.251.193 success:true
+ip:10.1.251.194 success:true
+ip:10.1.251.195 success:true
+ip:10.1.251.196 success:true
+ip:10.1.251.197 success:true
+ip:10.1.251.198 success:true
+ip:10.1.251.199 success:true
+###########################
+success:117 error:0
