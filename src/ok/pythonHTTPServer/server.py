@@ -300,7 +300,7 @@ class HTTPServer:
             raise
 
 
-www_directory = "/home/wkc/project/ComputerNetworkCourseDesign/src/pythonHTTPServer/v3.bootcss.com"
+www_directory = "./"
 
 
 def main():
@@ -309,8 +309,8 @@ def main():
     httpd = HTTPServer(server_address, SimpleHTTPRequestsHandler)
     sa = httpd.socket.getsockname()
     print("Serving HTTP on %s, port %s ..." % (sa[0], sa[1]))
+    print("open http://127.0.0.1:8000")
     httpd.serve_forever()
-
 
 if __name__ == '__main__':
     main()

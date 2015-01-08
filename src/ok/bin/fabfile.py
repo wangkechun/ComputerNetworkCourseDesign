@@ -40,3 +40,8 @@ def socks5Proxy(cmd="go build"):
 def clear():
 	local("find . -maxdepth 1 -type f -perm /111 -exec rm {} \;")
 
+
+
+def http():
+	with lcd("../pythonHTTPServer"):
+		local("python server.py")
