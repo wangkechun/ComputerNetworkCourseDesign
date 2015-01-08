@@ -37,6 +37,11 @@ def pingScan_test():
 def socks5Proxy(cmd="go build"):
 	local(cmd+" cs/ok/socks5Proxy")
 
+
+def socks5Proxy_test():
+	socks5Proxy()
+	local("./socks5Proxy")
+
 def clear():
 	local("find . -maxdepth 1 -type f -perm /111 -exec rm {} \;")
 
