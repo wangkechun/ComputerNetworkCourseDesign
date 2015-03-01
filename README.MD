@@ -243,7 +243,7 @@ socks5代理默认支持多种身份验证机制. 由于课程设计时间限制
 
 ###系统实现&功能特性
 - 项目名称 pythonHTTPServer
-- 实现语言 python
+- 实现语言 python（此实现大量参考Python标准库的设计)
 - 跨平台 linux/win/arm...
 - 使用方式: `python server.py  --port 10001 --www "./"`
 - 默认端口: `:8000`
